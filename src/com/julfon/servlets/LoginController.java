@@ -1,0 +1,58 @@
+package com.julfon.servlets;
+
+import java.io.IOException;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.julfon.dao.DAOFactory;
+import com.julfon.dao.UserDAO;
+import com.julfon.metiers.LoginForm;
+
+@WebServlet("/login")
+public class LoginController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	private UserDAO userdao;
+	
+	private static final String ATT_USER = "user";
+	private static final String ATT_ERREURS = "erreurs";
+	
+	private static final String CONF_DAO_FACTORY = "daofactory";
+	
+	private static final String PAGE_LOGIN = "/WEB-INF/login.jsp";
+	
+	private static final String URL_INDEX = "index";
+	
+	public void init( ) {
+		this.userdao = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getUserDAO();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		this.getServletContext().getRequestDispatcher( PAGE_LOGIN ).forward( request, response );
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		LoginForm lf = new LoginForm();
+		String username = lf.login(request, userdao);
+		Map<String, String> erreurs = lf.getErreurs();
+		
+		if(erreurs.isEmpty()) {
+			HttpSession session = request.getSession();
+			session.setAttribute(ATT_USER, username);
+			response.sendRedirect(URL_INDEX);
+		} else {
+			request.setAttribute(ATT_USER, username);
+			request.setAttribute(ATT_ERREURS, erreurs);
+			this.getServletContext().getRequestDispatcher( PAGE_LOGIN ).forward( request, response );
+		}
+	}
+
+}

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+ html, body {
+    margin:0;
+    padding:0;
+    height:100%; 
+ } 
+ 
+ #main-page { 
+    position:absolute; 
+    display:block;
+    background:#ccc; 
+    height:100%; 
+    width:100%;
+ }
+
+#content{
+	height:100%;
+	background-color: white;
+	margin-right:25%;
+	margin-left:25%;
+	
+	padding-top:5%;	
+	padding-bottom:5%;
+	padding-right:5%;
+	padding-left:5%;
+	
+	box-shadow: 10px 0px 8px #888888, -10px 0px 8px #888888;
+}
+
+.error{
+	color:red;
+}

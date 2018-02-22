@@ -6,15 +6,17 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private long credit;
 	
 	public User() {
 		
 	}
 	
-	public User(String username,String email, String password, String confirm_password) {
+	public User(String username,String email, String password) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.credit = 0;
 	}
 	
 	/*********************************************************/
@@ -51,6 +53,14 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public long getCredit() {
+		return credit;
+	}
+
+	public void setCredit(long credit) {
+		this.credit = credit;
 	}
 
 }

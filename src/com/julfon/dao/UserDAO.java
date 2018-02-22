@@ -13,8 +13,8 @@ public class UserDAO implements UserDAOInterface {
 	
 	protected DAOFactory factory_dao;
 	
-	private static final String SELECT_BY_USERNAME = "SELECT * FROM user WHERE username=?;";
-	private static final String INSERT_USER = "INSERT INTO user (username,email,password) VALUES (?,?,?);";
+	private static final String SELECT_BY_USERNAME = "SELECT * FROM Player WHERE UserName=?;";
+	private static final String INSERT_USER = "INSERT INTO Player (UserName,PassWord,MailAdress,Credit) VALUES (?,?,?,?);";
 	
 	public UserDAO(DAOFactory factory_dao) {
 		this.factory_dao = factory_dao;
@@ -28,7 +28,7 @@ public class UserDAO implements UserDAOInterface {
 		try {
 			connection = factory_dao.getConnection();
 			
-			statement = DAOMisceleanous.initPreparedStatement(connection, INSERT_USER, false, user.getUsername(), user.getEmail(), user.getPassword());
+			statement = DAOMisceleanous.initPreparedStatement(connection, INSERT_USER, false, user.getUsername(), user.getPassword(), user.getEmail(),user.getCredit());
 			
 			statement.executeUpdate();
 			
@@ -71,9 +71,10 @@ public class UserDAO implements UserDAOInterface {
 		User u = new User();
 		
 		u.setUsername(result.getString("username"));
-		u.setEmail(result.getString("email"));
-		u.setId(result.getLong("id"));
+		u.setEmail(result.getString("mailadress"));
+		u.setId(result.getLong("idplayer"));
 		u.setPassword(result.getString("password"));
+		u.setCredit(result.getShort("credit"));
 		
 		return u;
 	

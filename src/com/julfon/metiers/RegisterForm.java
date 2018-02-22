@@ -62,6 +62,8 @@ public class RegisterForm {
 		String securePassword = HashPassword.get_SHA_512_SecurePassword(password);
 		user.setPassword(securePassword);
 		
+		user.setCredit(0);
+		
 
 		if(erreurs.isEmpty()) {
 			userdao.create(user);

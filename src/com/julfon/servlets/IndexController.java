@@ -15,7 +15,7 @@ public class IndexController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		this.getServletContext().getRequestDispatcher( PAGE_INDEX ).forward( request, response );
+		this.getServletContext().getRequestDispatcher(PAGE_INDEX).forward(request, response);
 	}
 
 }

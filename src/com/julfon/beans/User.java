@@ -7,6 +7,7 @@ public class User {
 	private String password;
 	private String email;
 	private long credit;
+	private short isAdmin;
 	
 	public User() {
 		
@@ -61,6 +62,14 @@ public class User {
 
 	public void setCredit(long credit) {
 		this.credit = credit;
+	}
+
+	public short getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(short isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 }

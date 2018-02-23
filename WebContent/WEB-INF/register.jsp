@@ -45,7 +45,7 @@
 						<input
 							type="email"
 							class="validate <c:out value="${ erreurs['username'] != NULL ? 'invalid' : '' }"/>"
-							name="username"
+							name="email"
 							id="em"
 							value="<c:out value="${ user.email }" />"
 							>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.julfon.beans.User;
 import com.julfon.dao.DAOFactory;
 import com.julfon.dao.UserDAO;
 import com.julfon.metiers.LoginForm;
@@ -41,15 +42,17 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		LoginForm lf = new LoginForm();
-		String username = lf.login(request, userdao);
+		User user = lf.login(request, userdao);
 		Map<String, String> erreurs = lf.getErreurs();
+		
+		user.getUsername();
 		
 		if(erreurs.isEmpty()) {
 			HttpSession session = request.getSession();
-			session.setAttribute(ATT_USER, username);
+			session.setAttribute(ATT_USER, user);
 			response.sendRedirect(URL_INDEX);
 		} else {
-			request.setAttribute(ATT_USER, username);
+			request.setAttribute(ATT_USER, user);
 			request.setAttribute(ATT_ERREURS, erreurs);
 			this.getServletContext().getRequestDispatcher( PAGE_LOGIN ).forward( request, response );
 		}

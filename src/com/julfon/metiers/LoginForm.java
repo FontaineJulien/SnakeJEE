@@ -26,7 +26,7 @@ public class LoginForm {
 		
 	}
 	
-	public String login(HttpServletRequest request, UserDAO userdao) {
+	public User login(HttpServletRequest request, UserDAO userdao) {
 		
 		String username = getValueParameter(request, PARAM_USERNAME);
 		String password = getValueParameter(request, PARAM_PASSWORD);
@@ -43,7 +43,7 @@ public class LoginForm {
 			setErreur(ATT_USERNAME, "Unknown username");
 		}	
 		
-		return username;
+		return u;
 	}
 	
 	public Map<String, String> getErreurs(){

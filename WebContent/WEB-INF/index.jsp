@@ -24,7 +24,7 @@
 				    	<li><a href="<c:url value = "register"/>">Inscription</a></li>
 				    </c:when>
 				    <c:otherwise>
-	                    <li><a href="<c:url value = "profil"/>"><c:out value="${ user }" /></a></li>
+	                    <li><a href="<c:url value = "profil"/>"><c:out value="${ user.username }" /></a></li>
                 		<li><a href="<c:url value = "snakes"/>">Snakes</a></li>
 	                    <li><a href="<c:url value = "logout"/>">Déconnexion</a></li>
 				    </c:otherwise>
@@ -40,8 +40,8 @@
 						<div class="user-view">
 		                    <div class="background teal"></div>
 		                    <a href="<c:url value = "profil"/>"><img class="circle" src="snake-icon.png"></a>
-		                    <a href="<c:url value = "profil"/>"><span class="white-text name"><c:out value="${ user }" /></span></a>
-		                    <a href="<c:url value = "logout"/>"><span class="white-text email">Déconnexion</span></a>
+		                    <a href="<c:url value = "profil"/>"><span class="white-text name"><c:out value="${ user.username }" /></span></a>
+		                    <a href="<c:url value = "logout"/>"><span class="white-text email"><c:out value="${ user.email }" /></span></a>
 	                	</div>
                 		<li><a href="<c:url value = "snakes"/>">Snakes</a></li>
 	                    <li><a href="<c:url value = "logout"/>">Déconnexion</a></li>

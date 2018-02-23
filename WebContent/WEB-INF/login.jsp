@@ -32,7 +32,7 @@
 								class="validate <c:out value="${ erreurs['username'] != NULL ? 'invalid' : '' }"/>"
 								name="username"
 								id="un"
-								value="<c:out value="${ user }" />"
+								value="<c:out value="${ user.username }" />"
 								>
 							<label
 								for="un"

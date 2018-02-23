@@ -18,6 +18,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.credit = 0;
+		this.isAdmin = 0;
 	}
 	
 	/*********************************************************/

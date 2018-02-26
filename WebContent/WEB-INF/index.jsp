@@ -13,6 +13,7 @@
 	<link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 <body class="grey lighten-4">
+<a href="<c:url value = "usermanagement"/>">Gestion des utilisateurs</a>
     <nav>
         <div class="nav-wrapper">
             <a href="<c:url value = "index"/>" class="brand-logo center">Snake RPG</a>

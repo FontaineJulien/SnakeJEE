@@ -7,7 +7,6 @@
       <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
     </jsp-property-group>
   </jsp-config>
-  
   <listener>
     <listener-class>com.julfon.config.InitialisationDAOFactory</listener-class>
   </listener>

@@ -31,17 +31,23 @@ public class LoginForm {
 		String username = getValueParameter(request, PARAM_USERNAME);
 		String password = getValueParameter(request, PARAM_PASSWORD);
 		
-		String passwordHash = HashPassword.get_SHA_512_SecurePassword(password);
-		
 		User u = userdao.find(username);
 		
 		if(u != null) {
-			if(!u.getPassword().equals(passwordHash)) {
+			if(password != null) {
+				String passwordHash = HashPassword.get_SHA_512_SecurePassword(password);
+				if(!u.getPassword().equals(passwordHash)) {
+					setErreur(ATT_PASSWORD, "Invalid password");
+				}
+			} else {
 				setErreur(ATT_PASSWORD, "Invalid password");
 			}
+			
 		} else {
+			u = new User();
+			u.setUsername(username);
 			setErreur(ATT_USERNAME, "Unknown username");
-		}	
+		}
 		
 		return u;
 	}

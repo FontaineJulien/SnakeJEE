@@ -42,7 +42,12 @@
 					  				<button type="submit" class="btn btn-danger">x</button>
 					  			</form>
 					  		</td>
-					  		<td><a href="<c:url value = ""/>" class="btn btn-primary">o</a></td>
+					  		<td>
+					  			<form method="post" action="<c:url value="formupdateuser"/>">
+					  				<input name="idPlayer" type="hidden" value="<c:out value="${ user.id }" />">
+					  				<button type="submit" class="btn btn-primary">o</button>
+					  			</form>					  		
+					  		</td>
 					  	</tr>
 				  	</c:forEach>
 			  </tbody>

@@ -7,16 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.julfon.beans.User;
 import com.julfon.dao.DAOFactory;
 import com.julfon.dao.UserDAO;
 
-@WebServlet("/removeuser")
-public class RemoveUser extends HttpServlet {
+@WebServlet("/formupdateuser")
+public class FormUpdateUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
 	private static final String CONF_DAO_FACTORY = "daofactory";
 	
-	private static final String URL_USER_MANAGEMENT = "usermanagement";
+	private static final String PAGE_FORM_UPDATE_USER = "/WEB-INF/form_update_user.jsp";
+	
+	private static final String PARAM_ID_PLAYER = "idPlayer";
+	
+	private static final String ATT_USER = "user";
 	
 	private UserDAO userdao;
 	
@@ -26,12 +31,13 @@ public class RemoveUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		long id_player = Long.parseLong(request.getParameter("idPlayer"));
+		Short id_player = Short.parseShort(request.getParameter(PARAM_ID_PLAYER));
 		
-		userdao.delete(id_player);
+		User u = userdao.find(id_player);
 		
-		response.sendRedirect(URL_USER_MANAGEMENT);
-
+		request.setAttribute(ATT_USER, u);
+		
+		this.getServletContext().getRequestDispatcher(PAGE_FORM_UPDATE_USER).forward(request, response);
 	}
 
 }

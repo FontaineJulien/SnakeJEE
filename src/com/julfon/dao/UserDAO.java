@@ -15,8 +15,10 @@ public class UserDAO implements UserDAOInterface {
 	protected DAOFactory factory_dao;
 	
 	private static final String SELECT_BY_USERNAME = "SELECT * FROM Player WHERE UserName=?;";
+	private static final String SELECT_BY_ID = "SELECT * FROM Player WHERE idPlayer=?;";
 	private static final String INSERT_USER = "INSERT INTO Player (UserName,PassWord,MailAddress,Credit,isAdmin) VALUES (?,?,?,?,?);";
 	private static final String SELECT_ALL_USERS = "SELECT * FROM Player;";
+	private static final String UPDATE_USER = "UPDATE Player SET UserName=?, MailAddress=?, isAdmin=? WHERE idPlayer=?";
 	private static final String DELETE_BY_ID = "DELETE FROM Player WHERE idPlayer=?;";
 	
 	
@@ -71,6 +73,32 @@ public class UserDAO implements UserDAOInterface {
 		return u;
 	}
 	
+	public User find(short idPlayer) throws DAOException {
+			
+			User u = null;
+			Connection connection = null;
+			PreparedStatement statement = null;
+			ResultSet result = null;
+			try {
+				connection = factory_dao.getConnection();
+				
+				statement = DAOMisceleanous.initPreparedStatement(connection, SELECT_BY_ID, false, idPlayer);
+				
+				result = statement.executeQuery();
+				
+				if(result.next()) {
+					u = map(result);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DAOMisceleanous.close(connection,statement,result);
+			}
+			
+			return u;
+		}
+	
 	public Vector<User> find() throws DAOException {
 		Vector<User> userList = new Vector<User>();
 
@@ -98,7 +126,24 @@ public class UserDAO implements UserDAOInterface {
 		return userList;
 	}
 	
-	public void delete(short id) throws DAOException {
+	public void update(long idPlayer, String username, String email, short isAdmin) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		try {
+			connection = factory_dao.getConnection();
+			
+			statement = DAOMisceleanous.initPreparedStatement(connection, UPDATE_USER, false, username, email, isAdmin, idPlayer);
+			
+			statement.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DAOMisceleanous.close(connection,statement);
+		}
+	}
+	
+	public void delete(long id) throws DAOException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		try {

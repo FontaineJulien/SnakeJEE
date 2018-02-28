@@ -59,8 +59,10 @@ public class RegisterForm {
 			setErreur(ATT_PASSWORD,e.getMessage());
 		}
 		
-		String securePassword = HashPassword.get_SHA_512_SecurePassword(password);
-		user.setPassword(securePassword);
+		if(password != null && !password.isEmpty()) {
+			String securePassword = HashPassword.get_SHA_512_SecurePassword(password);
+			user.setPassword(securePassword);
+		}
 		
 		user.setCredit(0);
 		
@@ -84,11 +86,15 @@ public class RegisterForm {
 	}
 	
 	private void verificationPassword(String password, String confirm_password) throws Exception {
-		if(password.isEmpty()) {
+		if(password == null) {
 			throw new Exception("Password is empty");
 		} else {
-		if(!password.equals(confirm_password))
-			throw new Exception("Password does not match the confirmation password");
+			if(password.isEmpty()) {
+				throw new Exception("Password is empty");
+			} else {
+				if(!password.equals(confirm_password))
+					throw new Exception("Password does not match the confirmation password");
+			}
 		}
 	}
 	

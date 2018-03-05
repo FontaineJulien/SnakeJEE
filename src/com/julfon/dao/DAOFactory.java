@@ -95,4 +95,8 @@ public class DAOFactory {
     public UserDAO getUserDAO() {
         return new UserDAO( this );
     }
+    
+    public ArticleDAO getArticleDAO() {
+    	return new ArticleDAO( this );
+    }
 }

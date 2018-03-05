@@ -14,6 +14,7 @@
 </head>
 <body class="grey lighten-4">
 <a href="<c:url value = "usermanagement"/>">Gestion des utilisateurs</a>
+<a href="<c:url value = "formcreatearticle"/>">Ecrire un article</a>
     <nav>
         <div class="nav-wrapper">
             <a href="<c:url value = "index"/>" class="brand-logo center">Snake RPG</a>
@@ -76,6 +77,18 @@
             </div>                
         </div>
     </div>
+    <c:forEach items="${listArticles}" var="article" >
+    <div class="col s8 offset-s2">
+        <div class="card">                
+            <div class="card-content">
+                <a class="card-title"><c:out value="${ article.title } by ${ article.author.username } (${ article.date })" /></a>
+                <p>
+                    <c:out value="${ article.content }" />
+                </p>
+            </div>                
+        </div>
+    </div>
+    </c:forEach>
     
     </div>
     

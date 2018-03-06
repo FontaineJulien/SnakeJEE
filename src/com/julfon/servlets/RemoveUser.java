@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.julfon.dao.DAOFactory;
 import com.julfon.dao.UserDAO;
 
+/*
+ * Servlet gérant la suppression d'un utilisateur
+ */
 @WebServlet("/removeuser")
 public class RemoveUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;

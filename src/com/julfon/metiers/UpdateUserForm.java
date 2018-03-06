@@ -7,20 +7,28 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.julfon.beans.User;
 
+/*
+ * Objet métier gérant la vérification les informations de 
+ * l'utilisateur saisies suite à une modification de compte.
+ */
 public class UpdateUserForm {
 	
+	// Permet de stocker les messages en cas d'informations invalides
+	private Map<String, String> erreurs = new HashMap<String, String>();
+	
+	// Expressions régulières
 	private static final String REGEXP_EMAIL = "^[a-zA-Z]([a-zA-Z0-9_]|\\.)*@[a-z]*\\.[a-z]{2,3}$";
 	private static final String REGEXP_NAME = "^[A-Z][a-z]{2,30}$";
 	
-	private static final String ATT_USERNAME = "username";
-	private static final String ATT_EMAIL = "email";
-	
+	// Nom des paramètres reçus dans la requête
 	private static final String PARAM_ID_PLAYER = "idPlayer";
 	private static final String PARAM_USERNAME = "username";
 	private static final String PARAM_EMAIL = "email";
 	private static final String PARAM_IS_ADMIN = "isAdmin";
 	
-	private Map<String, String> erreurs = new HashMap<String, String>();
+	// Nom des attributs (clefs) placés dans la map des messages d'erreur
+	private static final String ATT_USERNAME = "username";
+	private static final String ATT_EMAIL = "email";
 	
 	public UpdateUserForm() {
 		

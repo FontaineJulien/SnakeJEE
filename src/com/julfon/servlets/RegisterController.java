@@ -16,6 +16,9 @@ import com.julfon.dao.DAOFactory;
 import com.julfon.dao.UserDAO;
 import com.julfon.metiers.RegisterForm;
 
+/*
+ * Servlet gérant l'inscription d'un utilisateur
+ */
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,10 +38,17 @@ public class RegisterController extends HttpServlet {
 		this.userdao = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getUserDAO();
 	}
 	
+	/*
+	 * Affichage du formulaire d'inscription
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher( PAGE_REGISTER ).forward( request, response );
 	}
 
+	/*
+	 * Gestion des informations saisies : si valide affichage page d'acceuil, sinon affichage formulaire d'inscription avec
+	 * les messages d'erreurs
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RegisterForm rf = new RegisterForm();

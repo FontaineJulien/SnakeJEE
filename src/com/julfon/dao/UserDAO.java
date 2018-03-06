@@ -26,6 +26,12 @@ public class UserDAO implements UserDAOInterface {
 		this.factory_dao = factory_dao;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.julfon.dao.UserDAOInterface#create(com.julfon.beans.User)
+	 * 
+	 * Création d'un joueur en BDD.
+	 */
 	@Override
 	public void create(User user) throws DAOException {
 		
@@ -46,6 +52,13 @@ public class UserDAO implements UserDAOInterface {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.julfon.dao.UserDAOInterface#find(java.lang.String)
+	 * 
+	 * Recherche d'un joueur en BDD par son pseudo.
+	 * Rappel : Le pseudo d'un joueur est unique.
+	 */
 	@Override
 	public User find(String username) throws DAOException {
 		
@@ -73,6 +86,13 @@ public class UserDAO implements UserDAOInterface {
 		return u;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see com.julfon.dao.UserDAOInterface#find(short)
+	 * 
+	 * Recherche d'un joueur en BDD par son ID de joueur
+	 */
+	@Override
 	public User find(short idPlayer) throws DAOException {
 			
 			User u = null;
@@ -99,6 +119,15 @@ public class UserDAO implements UserDAOInterface {
 			return u;
 		}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see com.julfon.dao.UserDAOInterface#find()
+	 * 
+	 * Récupération de liste complète des joueurs
+	 * 
+	 * A voir si on veut limiter le nombre que l'on récupère
+	 */
+	@Override
 	public Vector<User> find() throws DAOException {
 		Vector<User> userList = new Vector<User>();
 
@@ -126,6 +155,13 @@ public class UserDAO implements UserDAOInterface {
 		return userList;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see com.julfon.dao.UserDAOInterface#update(long, java.lang.String, java.lang.String, short)
+	 * 
+	 * Modification des informations d'un joueur par un admin
+	 */
+	@Override
 	public void update(long idPlayer, String username, String email, short isAdmin) {
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -143,6 +179,13 @@ public class UserDAO implements UserDAOInterface {
 		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see com.julfon.dao.UserDAOInterface#delete(long)
+	 * 
+	 * Suppression d'un joueur
+	 */
+	@Override
 	public void delete(long id) throws DAOException {
 		Connection connection = null;
 		PreparedStatement statement = null;

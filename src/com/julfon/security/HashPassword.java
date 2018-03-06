@@ -3,6 +3,9 @@ package com.julfon.security;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/*
+ * Objet utilitaire permettant de hasher un mot de passe en SHA-512
+ */
 public class HashPassword {
 	
 	private HashPassword() {

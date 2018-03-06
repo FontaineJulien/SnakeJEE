@@ -18,7 +18,17 @@ public class ArticleDAO implements ArticleDAOInterface {
 	public ArticleDAO(DAOFactory factory) {
 		this.factory_dao = factory;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.julfon.dao.ArticleDAOInterface#find()
+	 * 
+	 * Récupère la liste de tous les articles pour qu'ils soient
+	 * affichés dans la page d'acceuil
+	 * 
+	 * A voir si on veut limiter le nombre que l'on récupère afin
+	 * de ne pas surcharger la page d'acceuil
+	 */
 	@Override
 	public Vector<Article> find() throws DAOException {
 		Vector<Article> articleList = new Vector<Article>();

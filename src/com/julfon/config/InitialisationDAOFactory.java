@@ -6,6 +6,11 @@ import javax.servlet.ServletContextListener;
 import com.julfon.dao.DAOConfigurationException;
 import com.julfon.dao.DAOFactory;
 
+/*
+ * Instanciation de la DAO factory au lancement de l'application.
+ * Elle est placée en attribut dans le ServletContext pour être accessible
+ * depuis les Servlets
+ */
 public class InitialisationDAOFactory implements ServletContextListener {
 	
 	private DAOFactory daofactory;

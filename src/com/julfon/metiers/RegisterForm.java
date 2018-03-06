@@ -9,21 +9,29 @@ import com.julfon.beans.User;
 import com.julfon.dao.UserDAO;
 import com.julfon.security.HashPassword;
 
+/*
+ * Objet métier gérant la vérification les informations de 
+ * l'utilisateur suite à une création de compte.
+ */
 public class RegisterForm {
 	
+	// Permet de stocker les messages en cas d'informations invalides
 	private Map<String, String> erreurs = new HashMap<String, String>();
 	
-	private static final String ATT_PASSWORD = "password";
-	private static final String ATT_USERNAME = "username";
-	private static final String ATT_EMAIL = "email";
+	// Expressions régulières
+	private static final String REGEXP_EMAIL = "^[a-zA-Z]([a-zA-Z0-9_]|\\.)*@[a-z]*\\.[a-z]{2,3}$";
+	private static final String REGEXP_NAME = "^[A-Z][a-z]{2,30}$";
 	
+	// Nom des paramètres reçus dans la requête
 	private static final String PARAM_USERNAME = "username";
 	private static final String PARAM_EMAIL = "email";
 	private static final String PARAM_PASSWORD = "password";
 	private static final String PARAM_CONFIRM_PASSWORD = "confirm_password";
 	
-	private static final String REGEXP_EMAIL = "^[a-zA-Z]([a-zA-Z0-9_]|\\.)*@[a-z]*\\.[a-z]{2,3}$";
-	private static final String REGEXP_NAME = "^[A-Z][a-z]{2,30}$";
+	// Nom des attributs (clefs) placés dans la map des messages d'erreur
+	private static final String ATT_PASSWORD = "password";
+	private static final String ATT_USERNAME = "username";
+	private static final String ATT_EMAIL = "email";
 	
 	public RegisterForm() {
 		

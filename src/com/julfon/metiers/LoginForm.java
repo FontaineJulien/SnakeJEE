@@ -9,16 +9,20 @@ import com.julfon.beans.User;
 import com.julfon.dao.UserDAO;
 import com.julfon.security.HashPassword;
 
-//import com.julfon.beans.User;
-//import com.julfon.security.HashPassword;
-
+/*
+ * Objet métier gérant la vérification du pseudo et du mot de passe de 
+ * l'utilisateur suite à une tentative de connexion.
+ */
 public class LoginForm {
 	
+	// Permet de stocker les messages en cas d'informations invalides
 	private Map<String, String> erreurs = new HashMap<String, String>();
 	
+	// Nom des paramètres reçus dans la requête
 	private static final String PARAM_USERNAME = "username";
 	private static final String PARAM_PASSWORD = "password";
 	
+	// Nom des attributs (clefs) placés dans la map des messages d'erreur
 	private static final String ATT_PASSWORD = "password";
 	private static final String ATT_USERNAME = "username";
 	
@@ -26,6 +30,9 @@ public class LoginForm {
 		
 	}
 	
+	/*
+	 * Vérification des informations saisies par l'utilisateur
+	 */
 	public User login(HttpServletRequest request, UserDAO userdao) {
 		
 		String username = getValueParameter(request, PARAM_USERNAME);

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * Servlet gérant l'affichage du formulaire de création d'un article
+ */
 @WebServlet("/formcreatearticle")
 public class FormCreateArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;

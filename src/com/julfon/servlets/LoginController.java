@@ -15,6 +15,9 @@ import com.julfon.dao.DAOFactory;
 import com.julfon.dao.UserDAO;
 import com.julfon.metiers.LoginForm;
 
+/*
+ * Servlet gérant la connexion d'un utilisateur
+ */
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,12 +36,19 @@ public class LoginController extends HttpServlet {
 	public void init( ) {
 		this.userdao = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getUserDAO();
 	}
-
+	
+	/*
+	 * Affichage du formulaire de connexion
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		this.getServletContext().getRequestDispatcher( PAGE_LOGIN ).forward( request, response );
 	}
 
+	/*
+	 * Gestion des informations saisies : si valide affichage page d'acceuil en mode connecté sinon affichage pas login
+	 * avec les messages d'erreurs 
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		LoginForm lf = new LoginForm();

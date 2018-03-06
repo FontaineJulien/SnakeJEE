@@ -11,6 +11,10 @@ import com.julfon.beans.User;
 import com.julfon.dao.DAOFactory;
 import com.julfon.dao.UserDAO;
 
+/*
+ * Servlet gérant la récupération d'un utilisateur afin d'afficher le formulaire
+ * permettant de modifier ses informations
+ */
 @WebServlet("/formupdateuser")
 public class FormUpdateUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -16,7 +16,10 @@ import com.julfon.dao.DAOFactory;
 /*
  * TODO : Formater la date d'affichage des articles
  * TODO : Gerer l'administration des articles
- * TODO : Commenter le code
+ * TODO : Gérer le blocage des pages admin par un non-admin (avec des filtres eventuellement)
+ * TODO : Ecrire des TU
+ * 
+ * Servlet gérant la récupération des articles et l'affichage de la page d'acceuil
  */
 @WebServlet("/index")
 public class IndexController extends HttpServlet {
